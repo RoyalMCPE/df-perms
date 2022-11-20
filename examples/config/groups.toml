@@ -1,0 +1,8 @@
+[[Group]]
+Title = "foo"
+Level = 1
+
+[[Group]]
+Title = "bar"
+Level = 2
+Tags = ["cmd.test"]

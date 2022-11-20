@@ -5,7 +5,6 @@ import (
 	"os"
 
 	"github.com/df-mc/dragonfly/server"
-	"github.com/df-mc/dragonfly/server/player"
 	"github.com/df-mc/dragonfly/server/player/chat"
 	"github.com/pelletier/go-toml"
 	dfperms "github.com/royalmcpe/df-perms"
@@ -19,10 +18,12 @@ func main() {
 
 	chat.Global.Subscribe(chat.StdoutSubscriber{})
 
+	// Read the group file
 	groups, err := readGroups()
 	if err != nil {
 		log.Fatalln(err)
 	}
+	// Apply the config
 	groups.New()
 
 	conf, err := readConfig(log)
@@ -34,8 +35,7 @@ func main() {
 	srv.CloseOnProgramEnd()
 
 	srv.Listen()
-	for srv.Accept(func(p *player.Player) {
-	}) {
+	for srv.Accept(nil) {
 	}
 }
 

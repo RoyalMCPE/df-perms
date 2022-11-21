@@ -11,7 +11,9 @@ import (
 var man *manager
 
 func init() {
-	man = &manager{}
+	man = &manager{
+		sessions: map[uuid.UUID]*Session{},
+	}
 }
 
 type manager struct {
